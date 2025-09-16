@@ -29,6 +29,9 @@ const userName = "John Smith";
 
 const companyName = "Smith & Co";
 
+// Track the currently active tab
+const activeTab = ref("Dashboard");
+
 const navSections = ref<NavItem[]>([
   {
     label: "PropertyOS",
@@ -64,8 +67,11 @@ const navSections = ref<NavItem[]>([
 ]);
 
 
-function navigate(route: string | undefined) {
-  if (route) router.push(route);
+function navigate(route: string | undefined, label: string) {
+  if (route) {
+    router.push(route);
+    activeTab.value = label; // Update the active tab when navigating
+  }
 }
 
 </script>
@@ -87,8 +93,8 @@ function navigate(route: string | undefined) {
                     v-for="item in navSection.children"
                     :key="item.label"
                     class="nav-item"
-                    :class="{ 'active': item.label === 'Savings Scout' }"
-                    @click="navigate(item.route)"
+                    :class="{ 'active': item.label === activeTab }"
+                    @click="navigate(item.route, item.label)"
                 >
                     <component :is="item.icon" class="nav-icon" />
                     <span class="nav-label">{{ item.label }}</span>
