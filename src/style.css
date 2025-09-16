@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-deep-blue: '#205f92',
+}
+
 :root {
+  --color-deep-blue: #205f92;
   /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
