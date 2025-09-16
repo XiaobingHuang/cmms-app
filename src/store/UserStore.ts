@@ -7,7 +7,7 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     login(username: string, password: string) {
-      if (username === 'admin' && password === 'password') {
+      if (username === 'admin@gmail.com' && password === 'password') {
         this.currentUser = {
           id: 1,
           username,
