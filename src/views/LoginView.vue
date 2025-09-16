@@ -91,7 +91,7 @@ function validatePassword(input:string):boolean{
   width: 100%;
 }
 .helix-text {
-  color: var(--color-deep-blue);
+  color: var(--color-blue);
 }
 
 </style>

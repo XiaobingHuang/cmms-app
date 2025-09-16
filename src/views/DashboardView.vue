@@ -3,15 +3,40 @@ import SideBar from '../components/SideBar.vue';
 </script>
 
 <template>
-    <div class="flex">
+    <div class="dashboard-container">
         <SideBar />
-        <main class="flex-1 p-6">
-            <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
-            <p>Welcome to your dashboard!</p>
+        <main class="main-content">
+            <h1 class="dashboard-title">Dashboard</h1>
+            <p class="dashboard-subtitle">Welcome to your dashboard!</p>
         </main>
     </div>
 </template>
 
-<style>
+<style scoped>
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
 
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #f8f9fa;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1a1a1a;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.dashboard-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
 </style>

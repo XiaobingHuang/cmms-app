@@ -5,7 +5,8 @@
 }
 
 :root {
-  --color-deep-blue: #205f92;
+  --color-blue: #205f92;
+  --color-deep-blue: rgb(4 39 72);
   /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
