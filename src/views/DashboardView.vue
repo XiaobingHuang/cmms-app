@@ -1,28 +1,17 @@
 <script setup lang="ts">
-import SideBar from '../components/SideBar.vue';
+// Dashboard content only - layout is handled by AppLayout
 </script>
 
 <template>
-    <div class="dashboard-container">
-        <SideBar />
-        <main class="main-content">
-            <h1 class="dashboard-title">Dashboard</h1>
-            <p class="dashboard-subtitle">Welcome to your dashboard!</p>
-        </main>
-    </div>
+  <div class="dashboard-content">
+    <h1 class="dashboard-title">Dashboard</h1>
+    <p class="dashboard-subtitle">Welcome to your dashboard!</p>
+  </div>
 </template>
 
 <style scoped>
-.dashboard-container {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--color-bg-secondary);
-}
-
-.main-content {
-  flex: 1;
-  padding: 24px;
-  background-color: var(--color-bg-secondary);
+.dashboard-content {
+  max-width: 1200px;
 }
 
 .dashboard-title {

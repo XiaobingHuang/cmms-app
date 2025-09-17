@@ -1,11 +1,11 @@
 <script setup lang="ts">
-
+import AppLayout from './components/AppLayout.vue';
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 text-gray-900">
+  <AppLayout>
     <router-view />
-  </div>
+  </AppLayout>
 </template>
 
 <style scoped>

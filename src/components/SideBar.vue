@@ -81,7 +81,6 @@ function navigate(route: string | undefined, label: string) {
         <div class="user-name">{{ userName }}</div>
         <div class="company-info">
             <span class="company-name">{{ companyName }}</span>
-            <ChevronDownIcon class="chevron-icon" />
         </div>
     </div>
     <nav class="navigation">
