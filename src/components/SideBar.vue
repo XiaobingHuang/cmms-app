@@ -29,7 +29,6 @@ const userName = "John Smith";
 
 const companyName = "Smith & Co";
 
-// Track the currently active tab
 const activeTab = ref("Dashboard");
 
 const navSections = ref<NavItem[]>([
@@ -110,11 +109,11 @@ function navigate(route: string | undefined, label: string) {
   width: 256px;
   min-height: 100vh;
   background-color: var(--color-deep-blue);
-  color: white;
+  color: var(--color-text-primary);
   display: flex;
   flex-direction: column;
   padding: 16px;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-family-primary);
 }
 
 .user-info {
@@ -125,7 +124,7 @@ function navigate(route: string | undefined, label: string) {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 4px;
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .company-info {
@@ -136,13 +135,13 @@ function navigate(route: string | undefined, label: string) {
 
 .company-name {
   font-size: 14px;
-  color: #a0a0a0;
+  color: var(--color-text-muted);
 }
 
 .chevron-icon {
   width: 16px;
   height: 16px;
-  color: #a0a0a0;
+  color: var(--color-text-muted);
 }
 
 .navigation {
@@ -158,7 +157,7 @@ function navigate(route: string | undefined, label: string) {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #a0a0a0;
+  color: var(--color-text-muted);
   margin-bottom: 12px;
   padding: 0 4px;
 }
@@ -182,30 +181,30 @@ function navigate(route: string | undefined, label: string) {
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--color-hover);
 }
 
 .nav-item.active {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--color-active);
 }
 
 .nav-icon {
   width: 20px;
   height: 20px;
-  color: #a0a0a0;
+  color: var(--color-text-muted);
   flex-shrink: 0;
 }
 
 .nav-item.active .nav-icon {
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .nav-label {
-  color: #e0e0e0;
+  color: var(--color-text-secondary);
   font-weight: 500;
 }
 
 .nav-item.active .nav-label {
-  color: white;
+  color: var(--color-text-primary);
 }
 </style>

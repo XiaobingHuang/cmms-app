@@ -5,19 +5,29 @@
 }
 
 :root {
+  /* Primary Colors */
   --color-blue: #205f92;
   --color-deep-blue: rgb(4 39 72);
-  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e0e0e0;
+  --color-text-muted: #a0a0a0;
+  
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-dark: #1a1a1a;
+  
+  /* Interactive Colors */
+  --color-hover: rgba(255, 255, 255, 0.1);
+  --color-active: rgba(255, 255, 255, 0.15);
+  
+  /* Border and Accent Colors */
+  --color-border: #e5e7eb;
+  --color-accent: #6b7280;
+  
+  /* Font Family */
+  --font-family-primary: system-ui, -apple-system, sans-serif;
 }
 

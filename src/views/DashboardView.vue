@@ -16,27 +16,27 @@ import SideBar from '../components/SideBar.vue';
 .dashboard-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
 }
 
 .main-content {
   flex: 1;
   padding: 24px;
-  background-color: #f8f9fa;
+  background-color: var(--color-bg-secondary);
 }
 
 .dashboard-title {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: #1a1a1a;
-  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--color-bg-dark);
+  font-family: var(--font-family-primary);
 }
 
 .dashboard-subtitle {
   font-size: 16px;
-  color: #6b7280;
+  color: var(--color-accent);
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-family-primary);
 }
 </style>
