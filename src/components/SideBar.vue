@@ -108,7 +108,7 @@ function navigate(route: string | undefined, label: string) {
 .sidebar {
   width: 256px;
   min-height: 100vh;
-  background-color: var(--color-deep-blue);
+  background-color: var(--color-bg-sidebar);
   color: var(--color-text-primary);
   display: flex;
   flex-direction: column;
