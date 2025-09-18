@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
-import {useLink, useRouter} from "vue-router";
-import { useUserStore } from "../store/UserStore";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+//import { useUserStore } from "../store/UserStore";
 import {isEmail} from "../untilis/unitilisFunctions"
 
 
@@ -13,7 +13,7 @@ const error = ref({
 });
 
 const router = useRouter();
-const userStore = useUserStore();
+// const userStore = useUserStore();
 
 function handleLogin(){
     // const isUserName = validateUserName(userName.value);
@@ -31,25 +31,25 @@ function handleLogin(){
      router.push("/dashboard");
 }
 
-function validateUserName(input: string):boolean{
-    if(input.trim() === "") {
-        error.value.name = "The email address field is required";
-        return false
-    }
-    if(!isEmail(input)) {
-        error.value.name = "The email address field must be a valid email";
-        return false;
-    }
-    return true
-}
+// function validateUserName(input: string):boolean{
+//     if(input.trim() === "") {
+//         error.value.name = "The email address field is required";
+//         return false
+//     }
+//     if(!isEmail(input)) {
+//         error.value.name = "The email address field must be a valid email";
+//         return false;
+//     }
+//     return true
+// }
 
-function validatePassword(input:string):boolean{
-    if(input.trim() === "") {
-        error.value.password = "The email address field is required";
-        return false
-    }
-    return true
-}
+// function validatePassword(input:string):boolean{
+//     if(input.trim() === "") {
+//         error.value.password = "The email address field is required";
+//         return false
+//     }
+//     return true
+// }
 
 </script>
 
