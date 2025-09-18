@@ -26,6 +26,7 @@ const mapElement = ref<HTMLElement | null>(null);
 
 let map: google.maps.Map; // store map instance
 let markers: google.maps.Marker[] = [];
+let markerCluster: MarkerClusterer;
 
 onMounted(async () => {
   const loader = new Loader({
@@ -40,7 +41,17 @@ onMounted(async () => {
     zoom: 10,
   });
 
-  markers = props.properties.map((property) => {
+  renderMarkers(props.properties);
+
+});
+
+const renderMarkers = (properties: Property[]) => {
+
+  // clear out markers 
+  markers.forEach(marker => marker.setMap(null));
+  markers = [];
+
+  markers = properties.map((property) => {
     const marker = new google.maps.Marker({
       position: { lat: property.lat, lng: property.lng },
       title: property.name,
@@ -57,26 +68,32 @@ onMounted(async () => {
       `,
     });
 
-    marker.addListener("click", () => infoWindow.open(map, marker));
-    return marker;
-  });
+      marker.addListener("click", () => infoWindow.open(map, marker));
+      return marker;
+  })  
 
-  new MarkerClusterer({ map, markers });
+  // Rebuild cluster
+  if (markerCluster) markerCluster.clearMarkers();
+  markerCluster = new MarkerClusterer({ map, markers });
 
-  watch(
-    () => props.selectedProperty,
-    (newMarker) => {
-      console.log(newMarker);
-      if (newMarker && map) {
-        map.panTo({ lat: newMarker.lat, lng: newMarker.lng });
-        map.setZoom(15); 
-      }
+}
+
+watch(
+  ()=>props.properties,
+  (newList) => {renderMarkers(newList)},
+  {deep: true}
+)
+
+watch(
+  () => props.selectedProperty,
+  (newMarker) => {
+    if (newMarker && map) {
+      map.panTo({ lat: newMarker.lat, lng: newMarker.lng });
+      map.setZoom(15); 
     }
+  }
 );
 
-  
-  
-});
 </script>
 
 <template>

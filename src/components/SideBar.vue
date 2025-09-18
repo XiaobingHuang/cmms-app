@@ -25,9 +25,9 @@ interface NavItem {
 
 const router = useRouter();
 
-const userName = "John Smith";
+const userName = "Jeffrey Huang";
 
-const companyName = "Smith & Co";
+const companyName = "";
 
 const activeTab = ref("Dashboard");
 

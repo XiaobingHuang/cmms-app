@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import Map from "../components/Map.vue";
 import {
   MagnifyingGlassIcon,
@@ -215,6 +215,19 @@ const propertiesList = reactive([
   },
 ]);
 
+const filteredPropertiesList = computed(() => {
+  const query = searchBarInput.value.trim().toLowerCase();
+
+  if (!query) return propertiesList;
+
+  return propertiesList.filter((property) =>
+    property.name.toLowerCase().includes(query) ||
+    property.address.toLowerCase().includes(query) ||
+    property.city.toLowerCase().includes(query) ||
+    property.zip.includes(query)
+  );
+});
+
 
 const downloadData = () => {
   console.log("Downloading property data...");
@@ -254,7 +267,7 @@ const downloadData = () => {
     </div>
 
     <!-- Map -->
-    <Map :properties="propertiesList" :selectedProperty="selectedProperty"/>
+    <Map :properties="filteredPropertiesList" :selectedProperty="selectedProperty"/>
 
     <!-- Properties List -->
     <div class="properties-list">
@@ -271,7 +284,7 @@ const downloadData = () => {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="property in propertiesList" :key="property.name" @click="selectedProperty = property">
+            <tr v-for="property in filteredPropertiesList" :key="property.name" @click="selectedProperty = property">
               <td>{{ property.name }}</td>
               <td>{{ property.address }}</td>
               <td>{{ property.city }}</td>
