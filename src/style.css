@@ -15,7 +15,8 @@
   
   /* Background Colors */
   --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8f9fa;
+  --color-bg-secondary: #f8f9fa; /* slight gray for overall bg color */
+  --color-bg-third: #e5e7eb; /* darker gray for hover states */
   --color-bg-dark: #1a1a1a;
   --color-bg-sidebar: rgb(4 39 72);
   
@@ -63,7 +64,7 @@
 }
 
 .secondary-button:hover {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-third);
 }
 
 .primary-input {
