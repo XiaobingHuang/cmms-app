@@ -10,6 +10,8 @@ import {
 
 const searchBarInput = ref("");
 
+const selectedProperty = ref();
+
 const propertiesList = reactive([
   {
     name: "Elmwood Arts Center",
@@ -252,7 +254,7 @@ const downloadData = () => {
     </div>
 
     <!-- Map -->
-    <Map :properties="propertiesList"/>
+    <Map :properties="propertiesList" :selectedProperty="selectedProperty"/>
 
     <!-- Properties List -->
     <div class="properties-list">
@@ -269,7 +271,7 @@ const downloadData = () => {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="property in propertiesList" :key="property.name">
+            <tr v-for="property in propertiesList" :key="property.name" @click="selectedProperty = property">
               <td>{{ property.name }}</td>
               <td>{{ property.address }}</td>
               <td>{{ property.city }}</td>
