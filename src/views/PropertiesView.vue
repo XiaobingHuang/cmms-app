@@ -1,11 +1,11 @@
 <script setup lang="ts">
-// Properties content
+import Map from "../components/Map.vue"
 </script>
 
 <template>
   <div class="properties-content">
     <h1 class="page-title">Properties</h1>
-    <p class="page-subtitle">Manage property information and locations</p>
+    <Map></Map>
   </div>
 </template>
 
