@@ -6,75 +6,42 @@ import {
   FunnelIcon,
   Squares2X2Icon,
   ArrowDownTrayIcon,
-} from "@heroicons/vue/24/outline"; // Using outline version for UI consistency
+} from "@heroicons/vue/24/outline";
 
 const searchBarInput = ref("");
-const sortType = ref("name");
-const sortOptions = [
-  { value: "name", label: "Property Name" },
-  { value: "city", label: "City" },
-  { value: "zip", label: "Zip" },
-];
 
 const downloadData = () => {
   console.log("Downloading property data...");
-  // TODO: replace with real CSV / Excel export
 };
 </script>
 
 <template>
-  <div class="properties-content max-w-7xl mx-auto p-4 space-y-4">
+  <div class="properties-content">
     <!-- Top Search / Actions Bar -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div class="actions-bar">
       <!-- Search bar -->
-      <div class="relative w-full sm:w-1/3">
+      <div class="search-container">
         <input
           v-model="searchBarInput"
           type="text"
           placeholder="Search..."
-          class="w-full pl-10 pr-4 py-2 border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          class="primary-input"
         />
-        <MagnifyingGlassIcon
-          class="absolute left-3 top-2.5 h-5 w-5 text-gray-400"
-        />
+        <MagnifyingGlassIcon class="search-icon" />
       </div>
 
       <!-- Action buttons -->
-      <div class="flex items-center gap-3">
-        <!-- Filter button -->
-        <button
-          class="flex items-center gap-2 border rounded-xl px-3 py-2 hover:bg-gray-50 shadow-sm"
-        >
-          <FunnelIcon class="h-5 w-5" />
+      <div class="button-group">
+        <button class="secondary-button">
+          <FunnelIcon class="icon" />
         </button>
 
-        <!-- Grid/List view toggle (example) -->
-        <button
-          class="flex items-center gap-2 border rounded-xl px-3 py-2 hover:bg-gray-50 shadow-sm"
-        >
-          <Squares2X2Icon class="h-5 w-5" />
+        <button class="secondary-button">
+          <Squares2X2Icon class="icon" />
         </button>
 
-        <!-- Sort select -->
-        <select
-          v-model="sortType"
-          class="border rounded-xl px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-        >
-          <option
-            v-for="option in sortOptions"
-            :key="option.value"
-            :value="option.value"
-          >
-            Sort by {{ option.label }}
-          </option>
-        </select>
-
-        <!-- Download button -->
-        <button
-          @click="downloadData"
-          class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow"
-        >
-          <ArrowDownTrayIcon class="h-5 w-5" />
+        <button @click="downloadData" class="primary-button">
+          <ArrowDownTrayIcon class="icon" />
           <span>Download</span>
         </button>
       </div>
@@ -87,6 +54,54 @@ const downloadData = () => {
 
 <style scoped>
 .properties-content {
+  max-width: 80rem; /* max-w-7xl */
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   font-family: var(--font-family-primary);
 }
+
+.actions-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .actions-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .search-container {
+    width: 33%;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.625rem;
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
 </style>
