@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
+    "@googlemaps/markerclusterer": "^2.6.2",
     "@heroicons/vue": "^2.2.0",
     "@tailwindcss/vite": "^4.1.13",
     "pinia": "^3.0.3",
