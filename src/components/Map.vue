@@ -2,8 +2,23 @@
 import { onMounted, ref } from "vue";
 import { Loader } from "@googlemaps/js-api-loader";
 
+interface Property {
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: string;
+  category: string;
+  lat: number;
+  lng: number;
+}
+
+const props = defineProps<{
+  properties: Property[];
+}>();
+
+
 const apiKey = import.meta.env.VITE_GOOGLE_API_KEY as string;
-// const apiKey = "AIzaSyB9rCPQZA7gTLPdUpWGleytTtsbM-1sDWQ";
 
 const mapElement = ref<HTMLElement | null>(null);
 
@@ -16,15 +31,19 @@ onMounted(async () => {
   const google = await loader.load();
 
   const map = new google.maps.Map(mapElement.value as HTMLElement, {
-    center: { lat: 40.7128, lng: -74.006 },
-    zoom: 12,
+    center: { lat: 42.8864, lng: -78.8784 }, // Buffalo city center
+    zoom: 10,
   });
 
-  new google.maps.Marker({
-    position: { lat: 40.7128, lng: -74.006 },
-    map,
-    title: "Hello NYC!",
+  props.properties.forEach((property) => {
+    const marker = new google.maps.Marker({
+      position: { lat: property.lat, lng: property.lng },
+      map,
+      title: property.name,
+    })
   });
+
+  
 });
 </script>
 
