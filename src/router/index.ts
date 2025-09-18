@@ -93,11 +93,12 @@ const router = createRouter({
 
 router.beforeEach((to, _from, next) => {
   const userStore = useUserStore();
-  if (to.meta.requiresAuth && !userStore.currentUser) {
-    next("/login");
-  } else {
-    next();
-  }
+  // if (to.meta.requiresAuth && !userStore.currentUser) {
+  //   next("/login");
+  // } else {
+  //   next();
+  // }
+  next();
 });
 
 export default router;
