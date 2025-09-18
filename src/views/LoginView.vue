@@ -16,18 +16,19 @@ const router = useRouter();
 const userStore = useUserStore();
 
 function handleLogin(){
-    const isUserName = validateUserName(userName.value);
-    const ispassword = validatePassword(password.value);
+    // const isUserName = validateUserName(userName.value);
+    // const ispassword = validatePassword(password.value);
 
-    if(isUserName && ispassword){
-        const success = userStore.login(userName.value, password.value);
-        if(success){
-            router.push("/dashboard")
-        } else {
-            // error information center ...
-            error.value.name = "Invalid username or password";
-        }
-    }
+    // if(isUserName && ispassword){
+    //     const success = userStore.login(userName.value, password.value);
+    //     if(success){
+    //         router.push("/dashboard")
+    //     } else {
+    //         // error information center ...
+    //         error.value.name = "Invalid username or password";
+    //     }
+    // }
+     router.push("/dashboard");
 }
 
 function validateUserName(input: string):boolean{
