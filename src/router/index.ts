@@ -91,8 +91,8 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, _from, next) => {
-  const userStore = useUserStore();
+router.beforeEach((_to, _from, next) => {
+  // const userStore = useUserStore();
   // if (to.meta.requiresAuth && !userStore.currentUser) {
   //   next("/login");
   // } else {

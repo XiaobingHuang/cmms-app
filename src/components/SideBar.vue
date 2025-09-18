@@ -12,8 +12,7 @@ import {
   UserIcon,
   ClockIcon,
   MagnifyingGlassIcon,
-  BookOpenIcon,
-  ChevronDownIcon
+  BookOpenIcon
 } from "@heroicons/vue/24/outline"
 
 interface NavItem {
