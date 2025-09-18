@@ -2,7 +2,8 @@
 import { onMounted, ref } from "vue";
 import { Loader } from "@googlemaps/js-api-loader";
 
-const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string;
+const apiKey = import.meta.env.VITE_GOOGLE_API_KEY as string;
+// const apiKey = "AIzaSyB9rCPQZA7gTLPdUpWGleytTtsbM-1sDWQ";
 
 const mapElement = ref<HTMLElement | null>(null);
 
