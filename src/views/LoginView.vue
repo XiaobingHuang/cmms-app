@@ -74,7 +74,7 @@ function validatePassword(input:string):boolean{
 
 </template>
 
-<style>
+<style scoped>
 .input {
   display: block;
   width: 100%;
