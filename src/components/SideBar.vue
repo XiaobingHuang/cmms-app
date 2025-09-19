@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, withDefaults } from "vue";
 import { useRouter} from "vue-router"
 import { 
   ChartBarIcon, 
@@ -21,6 +21,15 @@ interface NavItem {
     route?: string;
     children?: NavItem[];
 }
+
+const props = withDefaults(
+  defineProps<{ isOpen?: boolean }>(),
+  {
+    isOpen: false
+  }
+);
+
+const emit = defineEmits<{ (event: "navigate", route?: string): void }>();
 
 const router = useRouter();
 
@@ -69,13 +78,17 @@ function navigate(route: string | undefined, label: string) {
   if (route) {
     router.push(route);
     activeTab.value = label; // Update the active tab when navigating
+    emit("navigate", route);
   }
 }
 
 </script>
 
 <template>
-  <aside class="sidebar">
+  <aside
+    id="app-sidebar"
+    :class="['sidebar', { open: props.isOpen } ]"
+  >
     <div class="user-info">
         <div class="user-name">{{ userName }}</div>
         <div class="company-info">
@@ -104,7 +117,7 @@ function navigate(route: string | undefined, label: string) {
 
 <style scoped>
 .sidebar {
-  width: 256px;
+  width: clamp(220px, 22vw, 256px);
   min-height: 100vh;
   background-color: var(--color-bg-sidebar);
   color: var(--color-text-primary);
@@ -112,6 +125,7 @@ function navigate(route: string | undefined, label: string) {
   flex-direction: column;
   padding: 16px;
   font-family: var(--font-family-primary);
+  overflow-y: auto;
 }
 
 .user-info {
@@ -204,5 +218,30 @@ function navigate(route: string | undefined, label: string) {
 
 .nav-item.active .nav-label {
   color: var(--color-text-primary);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: clamp(200px, 28vw, 236px);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(75vw, 260px);
+    max-width: 280px;
+    min-height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
 }
 </style>
